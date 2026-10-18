@@ -1,0 +1,635 @@
+:root {
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    color: #172b4d;
+    background: #f4f7fb;
+    font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    line-height: 1.5;
+}
+
+header {
+    color: white;
+    background: linear-gradient(120deg, #123c69, #176b87);
+    padding: 38px 24px;
+}
+
+.header-inner, main {
+    width: min(1440px, 100%);
+    margin: 0 auto;
+}
+
+.eyebrow {
+    margin: 0 0 8px;
+    font-size: 0.76rem;
+    letter-spacing: 0.13em;
+    font-weight: 700;
+    opacity: 0.85;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    line-height: 1.2;
+}
+
+header p:last-child {
+    margin: 12px 0 0;
+    color: #e1eff7;
+}
+
+main { padding: 26px 24px 16px; }
+
+.search-panel, .results-panel {
+    background: white;
+    border: 1px solid #e0e7f0;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 18px rgb(25 55 90 / 5%);
+}
+
+h2 { margin: 0 0 8px; font-size: 1.2rem; }
+
+.muted, #status {
+    color: #61728a;
+    font-size: 0.92rem;
+}
+
+.muted { margin: 0 0 20px; }
+
+form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.form-field { display: flex; flex-direction: column; gap: 7px; }
+
+label { font-weight: 600; font-size: 0.9rem; }
+
+input {
+    width: 100%;
+    padding: 12px 13px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    font: inherit;
+    color: #172b4d;
+    background: white;
+}
+
+input:focus {
+    outline: 2px solid #8ecae6;
+    border-color: #176b87;
+}
+
+.form-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    border: 0;
+    border-radius: 7px;
+    padding: 11px 17px;
+    background: #176b87;
+    color: white;
+    font: inherit;
+    font-weight: 650;
+    cursor: pointer;
+}
+
+button:hover:not(:disabled) { background: #12566d; }
+button:disabled { opacity: 0.45; cursor: not-allowed; }
+
+button.secondary {
+    color: #24415d;
+    background: #edf2f7;
+    border: 1px solid #d7e0ea;
+}
+
+button.secondary:hover:not(:disabled) { background: #e1e9f2; }
+
+.results-heading {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+
+#status { margin: 5px 0 0; }
+.result-count { font-size: 0.88rem; color: #176b87; font-weight: 700; }
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid #e0e7f0;
+    border-radius: 8px;
+}
+
+table {
+    width: 100%;
+    min-width: 1120px;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.87rem;
+}
+
+th, td {
+    padding: 12px 13px;
+    border-bottom: 1px solid #e7edf4;
+    vertical-align: top;
+    overflow-wrap: anywhere;
+}
+
+th {
+    background: #edf4f8;
+    color: #29445c;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+tbody tr:hover { background: #f7fafc; }
+tbody tr:last-child td { border-bottom: 0; }
+.empty-state { text-align: center; color: #64748b; padding: 28px; }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    padding-top: 18px;
+    color: #52657b;
+    font-size: 0.9rem;
+}
+
+footer {
+    color: #697b90;
+    text-align: center;
+    font-size: 0.82rem;
+    padding: 8px 0 22px;
+}
+
+footer p { margin: 5px 0; }
+
+@media (max-width: 680px) {
+    header { padding: 28px 18px; }
+    main { padding: 18px 12px; }
+    .search-panel, .results-panel { padding: 17px; }
+    form { grid-template-columns: 1fr; }
+    .form-actions { grid-column: 1; }
+    .results-heading { flex-direction: column; }
+}
+
+
+
+
+/* Professional developer identity banner */
+.developer-banner {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 28px;
+    margin: 0 0 28px;
+    background: linear-gradient(115deg, #101c36 0%, #173b66 60%, #155e75 100%);
+    color: #ffffff;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 8px 24px rgba(15, 35, 65, 0.14);
+}
+
+.developer-brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;
+}
+
+.developer-mark {
+    display: flex;
+    flex: 0 0 58px;
+    width: 58px;
+    height: 58px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.13);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.developer-details {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.developer-eyebrow {
+    color: #a8d9f0;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+}
+
+.developer-name {
+    color: #ffffff;
+    font-size: 25px;
+    line-height: 1.25;
+    font-weight: 750;
+    letter-spacing: -0.5px;
+}
+
+.developer-role {
+    color: #d6e6f5;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.developer-github {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    flex-shrink: 0;
+    padding: 11px 16px;
+    border-radius: 9px;
+    border: 1px solid rgba(255, 255, 255, 0.38);
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.developer-github:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+@media (max-width: 600px) {
+    .developer-banner {
+        padding: 17px;
+        gap: 14px;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .developer-mark {
+        flex-basis: 48px;
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+    }
+
+    .developer-name {
+        font-size: 22px;
+    }
+
+    .developer-github {
+        align-self: flex-start;
+    }
+}
+
+
+/* Prominent, professional developer attribution near the project title */
+.developer-credit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 9px;
+    width: fit-content;
+    max-width: 100%;
+    margin: 12px auto 24px;
+    padding: 10px 19px;
+    border: 1px solid #cbdcf8;
+    border-radius: 12px;
+    background: linear-gradient(110deg, #eff6ff, #f8faff);
+    box-sizing: border-box;
+}
+
+.developer-credit .developer-label {
+    color: #536783;
+    font-size: 11px;
+    font-weight: 750;
+    letter-spacing: 1.15px;
+}
+
+.developer-credit .developer-name {
+    color: #173b70;
+    font-size: 17px;
+    font-weight: 750;
+    letter-spacing: 0.1px;
+}
+
+.developer-credit a {
+    display: none !important;
+}
+
+@media (max-width: 600px) {
+    .developer-credit {
+        gap: 6px;
+        margin: 10px auto 20px;
+        padding: 9px 13px;
+    }
+
+    .developer-credit .developer-label {
+        font-size: 10px;
+    }
+
+    .developer-credit .developer-name {
+        font-size: 16px;
+    }
+}
+
+
+/* Single developer credit beside the project title */
+.developer-credit {
+    display: none !important;
+}
+
+.title-developer-credit {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 14px;
+    padding: 7px 12px;
+    border: 1px solid #cbdcf8;
+    border-radius: 9px;
+    background: #eff6ff;
+    color: #536783;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0;
+}
+
+.title-developer-credit strong {
+    color: #173b70;
+    font-weight: 750;
+}
+
+@media (max-width: 700px) {
+    .title-developer-credit {
+        margin: 8px 0 0;
+        font-size: 12px;
+    }
+}
+
+
+/* Final project heading and developer credit */
+.project-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin: 0 0 22px;
+}
+
+.project-title-row h1 {
+    margin: 0;
+}
+
+.project-title-row .developer-credit {
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    padding: 10px 16px;
+    border: 1px solid #cbdcf8;
+    border-radius: 10px;
+    background: #eff6ff;
+    color: #173b70;
+    font-size: 17px;
+    font-weight: 750;
+    letter-spacing: 0.1px;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+.developer-credit a {
+    display: none !important;
+}
+
+@media (max-width: 600px) {
+    .project-title-row {
+        gap: 10px;
+        margin-bottom: 18px;
+    }
+
+    .project-title-row .developer-credit {
+        font-size: 16px;
+        padding: 9px 13px;
+    }
+}
+
+
+/* Final left-aligned project banner */
+.project-title-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 18px;
+    width: 100%;
+    text-align: left;
+}
+
+.project-title-row h1 {
+    margin: 0;
+    width: 100%;
+    text-align: left;
+    font-size: clamp(2.2rem, 4vw, 3rem);
+    font-weight: 750;
+    line-height: 1.15;
+}
+
+.project-title-row .developer-credit {
+    align-self: center;
+    display: inline-block;
+    margin: 4px 0 0;
+    padding: 10px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 650;
+    line-height: 1.4;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.header-inner {
+    text-align: left;
+}
+
+.header-inner > p {
+    text-align: left;
+}
+
+@media (max-width: 650px) {
+    .project-title-row {
+        gap: 14px;
+    }
+
+    .project-title-row h1 {
+        font-size: 2rem;
+    }
+
+    .project-title-row .developer-credit {
+        font-size: 15px;
+        padding: 9px 14px;
+    }
+}
+
+
+/* Ensure the developer credit is visible */
+.project-title-row .developer-credit {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    align-self: center;
+    margin: 4px 0 0;
+    padding: 10px 18px;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: 650;
+    line-height: 1.4;
+    text-align: center;
+}
+
+/* Keep project title and developer credit on the same line */
+.project-title-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+
+.project-title-row h1 {
+    margin: 0;
+    text-align: left;
+}
+
+.project-title-row .developer-credit {
+    display: inline-block;
+    align-self: center;
+    margin: 0;
+    padding: 8px 14px;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 650;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+.project-title-row {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    flex-wrap: nowrap !important;
+    gap: 32px !important;
+    width: 100%;
+}
+
+.project-title-row h1 {
+    display: block !important;
+    width: auto !important;
+    flex: 0 1 auto !important;
+    margin: 0 !important;
+}
+
+.project-title-row .developer-credit {
+    display: inline-block !important;
+    width: auto !important;
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+    white-space: nowrap !important;
+}
+
+/* Autocomplete dropdowns */
+.form-field {
+    position: relative;
+}
+
+.autocomplete-list {
+    position: absolute;
+    top: calc(100% + 3px);
+    left: 0;
+    right: 0;
+    z-index: 100;
+    max-height: 260px;
+    overflow-y: auto;
+    background: #fff;
+    border: 1px solid #d5dee8;
+    border-radius: 9px;
+    box-shadow: 0 8px 24px rgba(20, 40, 60, 0.14);
+}
+
+.autocomplete-list[hidden] {
+    display: none;
+}
+
+.autocomplete-option {
+    display: block;
+    width: 100%;
+    padding: 10px 13px;
+    border: 0;
+    border-bottom: 1px solid #edf1f5;
+    background: #fff;
+    color: #243447;
+    text-align: left;
+    font: inherit;
+    cursor: pointer;
+    overflow-wrap: anywhere;
+}
+
+.autocomplete-option:last-child {
+    border-bottom: 0;
+}
+
+/* Note: Assumes your default .autocomplete-option has dark background and light text */
+.autocomplete-option:hover,
+.autocomplete-option:focus,
+.autocomplete-option.active {
+    background: #374151; /* Medium charcoal */
+    color: #ffffff;      /* Pure white text */
+    outline: none;
+}
+
+
+.autocomplete-option {
+    padding: 8px 12px; /* Smooths out the interactive target area */
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+
+.autocomplete-empty {
+    padding: 11px 13px;
+    color: #667789;
+    font-size: 0.9rem;
+}

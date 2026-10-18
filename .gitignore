@@ -1,0 +1,32 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+*.pem
+secrets/
+
+# Local data and database
+data/
+*.vcf
+*.vcf.gz
+*.bson
+*.dump
+mongodb_data/
+
+# Backups and temporary files
+backups/
+*.before-*
+*.log
+
+# OS and editor files
+.DS_Store
+.vscode/
+.idea/
+deployment/
