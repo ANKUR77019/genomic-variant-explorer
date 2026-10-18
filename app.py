@@ -8,9 +8,9 @@ from pymongo.errors import PyMongoError
 
 app = Flask(__name__)
 CORS(app, resources={
-    r"/search": {"origins": "*"},
-    r"/suggestions": {"origins": "*"}
-})
+    r"/search": {"origins": ["https://genomic-variant-explorer-frontend.vercel.app"]},
+    r"/suggestions": {"origins": ["https://genomic-variant-explorer-frontend.vercel.app"]}
+}, always_send=True)
 
 MONGO_URI = os.environ.get(
     "MONGO_URI", "mongodb://localhost:27017/"
