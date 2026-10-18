@@ -2,10 +2,15 @@ import os
 import re
 
 from flask import Flask, jsonify, render_template, request
+from flask_cors import CORS
 from pymongo import MongoClient
 from pymongo.errors import PyMongoError
 
 app = Flask(__name__)
+CORS(app, resources={
+    r"/search": {"origins": "*"},
+    r"/suggestions": {"origins": "*"}
+})
 
 MONGO_URI = os.environ.get(
     "MONGO_URI", "mongodb://localhost:27017/"
